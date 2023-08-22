@@ -86,40 +86,60 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+      body:  Container(
+        padding: const EdgeInsets.only(top:150),
+        decoration: const BoxDecoration(
+            color: Colors.tealAccent),
+        alignment: Alignment.center,
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+            children:[
+              androidLogo(),
+              const SizedBox(height:250),
+              infomation(),
+            ]
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      )
     );
   }
+}
+
+infomation() {
+  return  Container(
+      margin:const EdgeInsets.only(left:100,right:100),
+      child: Column(
+        children:[
+          iconAndContent(icon: Icons.phone_rounded,content: '0129384793'),
+          const SizedBox(height: 5),
+          iconAndContent(icon: Icons.share_outlined,content: 'FB: VoMinhHieu'),
+          const SizedBox(height: 5),
+          iconAndContent(icon: Icons.email_outlined,content: 'vohieu@gmail.com')
+        ],
+      )
+  );
+}
+
+androidLogo() {
+  return Column(
+      children:[
+        Image.asset('assets/image3.webp',
+            width: 150,
+            height:110),
+        const Text('VO MINH HIEU',
+            style: TextStyle(fontSize:20,fontWeight: FontWeight.bold)),
+        const Text('Android Deverloper Extraordinaire',
+          style: TextStyle(fontSize:17),)
+      ]
+  );
+}
+
+iconAndContent({required IconData icon, required String content}) {
+  return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children:[
+        Icon(icon, color: Colors.brown),
+        const SizedBox(width: 40),
+        Text(content,
+            style: const TextStyle(color: Colors.brown))
+      ]
+  );
 }
